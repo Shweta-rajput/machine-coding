@@ -2,18 +2,18 @@ import { memo, useEffect, useState } from "react";
 import "./progressBar.css";
 import ProjectLayout from "../ProjectLayout";
 
-const Bars = [4, 10, 20, 40, 50, 80];
+const Bars = [5, 10, 20, 40, 50, 80];
 
 const ProgressBar = memo(() => {
   return (
     <ProjectLayout
       title="Animated Progress Bar"
-      description="A simple animated progress bar built with React."
+      description="Progress bars with smooth fill animation."
       icon="📊"
     >
       <div className="progress-bars">
-        {Bars?.map((item, i) => (
-          <InnerBar progress={item} key={i} />
+        {Bars.map((item) => (
+          <InnerBar key={item} progress={item} />
         ))}
       </div>
     </ProjectLayout>
@@ -26,26 +26,21 @@ const InnerBar = ({ progress }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setProgressVal(progress);
-    }, 0);
+    }, 100);
 
-    return () => [clearTimeout(timer)];
-  }, []);
+    return () => clearTimeout(timer);
+  }, [progress]);
 
   return (
-    <div className="bar-box">
-      <div
-        className="bar"
-        role="progressbar"
-        aria-valuenow={progressVal}
-        aria-valuemin={0}
-        aria-valuemax={100}
-        style={{
-          // width: `${progressVal}%`,
-          color: progressVal < 5 ? "#000" : "#fff",
-          transform: `translateX(-${100 - progressVal}%)`,
-        }}
-      >
-        {progressVal} %
+    <div
+      className="bar-box"
+      role="progressbar"
+      aria-valuenow={progressVal}
+      aria-valuemin={0}
+      aria-valuemax={100}
+    >
+      <div className="bar" style={{ width: `${progressVal}%` }}>
+        <span>{progressVal}%</span>
       </div>
     </div>
   );
