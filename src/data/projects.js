@@ -24,6 +24,12 @@ export const projects = [
     emoji: "🍞",
   },
   {
+    title: "Tic Tac Toe",
+    description: "A simple Tic Tac Toe game built with React.",
+    path: "/tic-tac-toe",
+    emoji: "🎮",
+  },
+  {
     title: "Uber Box",
     description: "Practice UI interactions and component logic.",
     path: "/uber-box",
