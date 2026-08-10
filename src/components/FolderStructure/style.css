@@ -1,0 +1,17 @@
+.folder {
+  cursor: pointer;
+}
+
+.folder-content {
+  transform-origin: top;
+  transform: scaleY(0);
+  opacity: 0;
+  transition: 0.3s ease;
+  max-height: 0;
+}
+
+.folder-content.open {
+  opacity: 1;
+  transform: scaleY(1);
+  max-height: max-content;
+}

@@ -1,0 +1,13 @@
+.bar-box {
+  border: 1px solid #ccc;
+  border-radius: 5rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.bar {
+  background-color: green;
+  color: #fff;
+  text-align: right;
+  transition: Th0.5s ease-in;
+}
