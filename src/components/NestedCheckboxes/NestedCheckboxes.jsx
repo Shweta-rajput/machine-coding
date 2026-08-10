@@ -8,41 +8,43 @@ const NestedCheckboxes = () => {
 
   const handleCheck = useCallback(
     (isChecked, item) => {
-      let newState = { ...checkedItems };
+      const newState = { ...checkedItems };
 
-      const checkAllChildrens = (element) => {
+      const checkAllChildren = (element) => {
         newState[element.id] = isChecked;
-        element?.children?.forEach((ele) => {
-          checkAllChildrens(ele);
+
+        element?.children?.forEach((child) => {
+          checkAllChildren(child);
         });
       };
 
       const checkForParent = (element) => {
-        const allChildrensChecked = element?.children?.every((ele) => {
-          if (ele.children) {
-            checkForParent(ele);
-          }
-          return newState[ele.id];
+        if (!element?.children?.length) return;
+
+        element.children.forEach((child) => {
+          checkForParent(child);
         });
 
-        newState[element.id] = allChildrensChecked;
+        newState[element.id] = element.children.every(
+          (child) => newState[child.id],
+        );
       };
 
-      checkAllChildrens(item);
+      checkAllChildren(item);
 
-      checkboxData?.forEach((ele) => {
-        checkForParent(ele);
+      checkboxData.forEach((element) => {
+        checkForParent(element);
       });
 
       setCheckedItems(newState);
     },
-    [checkedItems, setCheckedItems],
+    [checkedItems],
   );
 
   return (
     <ProjectLayout
       title="Nested Checkboxes"
-      description="Practice recursive state management with nested checkboxes."
+      description="Select nested items with automatic parent-child state handling."
       icon="☑️"
     >
       <div className="nested-checkboxes">
@@ -58,29 +60,31 @@ const NestedCheckboxes = () => {
 
 const NestedTree = ({ data, checkedItems, onCheck }) => {
   return (
-    <ul>
-      {data?.map((item) => {
-        return (
-          <li key={item.id}>
+    <ul className="checkbox-tree">
+      {data?.map((item) => (
+        <li key={item.id} className="checkbox-item">
+          <div className="checkbox-row">
             <input
               type="checkbox"
+              id={`checkbox-${item.id}`}
               checked={checkedItems?.[item.id] || false}
               onChange={(e) => onCheck(e.target.checked, item)}
             />
-            <span>{item.label}</span>
 
-            {!!item.children?.length && (
-              <div>
-                <NestedTree
-                  data={item.children}
-                  checkedItems={checkedItems}
-                  onCheck={onCheck}
-                />
-              </div>
-            )}
-          </li>
-        );
-      })}
+            <label htmlFor={`checkbox-${item.id}`}>{item.label}</label>
+          </div>
+
+          {!!item.children?.length && (
+            <div className="checkbox-children">
+              <NestedTree
+                data={item.children}
+                checkedItems={checkedItems}
+                onCheck={onCheck}
+              />
+            </div>
+          )}
+        </li>
+      ))}
     </ul>
   );
 };
