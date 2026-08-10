@@ -29,10 +29,4 @@ export const projects = [
     path: "/tic-tac-toe",
     emoji: "🎮",
   },
-  {
-    title: "Uber Box",
-    description: "Practice UI interactions and component logic.",
-    path: "/uber-box",
-    emoji: "🚕",
-  },
 ];

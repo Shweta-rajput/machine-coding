@@ -2,9 +2,9 @@ import { useCallback, useState } from "react";
 
 const Folder = ({ data }) => {
   return (
-    <ul >
-      {data?.map((item) => (
-        <FolderItem item={item} />
+    <ul>
+      {data?.map((item, i) => (
+        <FolderItem key={i} item={item} />
       ))}
     </ul>
   );

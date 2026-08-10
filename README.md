@@ -2,6 +2,10 @@
 
 A collection of small React projects built for practicing machine coding and frontend development.
 
+## Live Demo
+
+[View Live Project](https://machine-coding-rosy.vercel.app/)
+
 ## Tech Stack
 
 - React

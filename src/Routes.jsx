@@ -3,7 +3,6 @@ import Home from "./Home";
 import ProgressBar from "./components/ProgressBar/ProgressBar";
 import FolderStructure from "./components/FolderStructure/FolderStructure";
 import NestedCheckboxes from "./components/NestedCheckboxes/NestedCheckboxes";
-import UberBox from "./components/UberBox/UberBox";
 import MultiToast from "./components/MultiToast/MultiToast";
 import TicTacToe from "./components/TicTacToe/TicTacToe";
 
@@ -16,7 +15,6 @@ const AllRoutes = () => {
       <Route path="/nested-checkboxes" element={<NestedCheckboxes />} />
       <Route path="/multiple-toasts" element={<MultiToast />} />
       <Route path="/tic-tac-toe" element={<TicTacToe />} />
-      <Route path="/uber-box" element={<UberBox />} />
     </Routes>
   );
 };
