@@ -29,4 +29,10 @@ export const projects = [
     path: "/tic-tac-toe",
     emoji: "🎮",
   },
+  {
+    title: "Bubble Sort Representation",
+    description: "Visualize the bubble sort algorithm.",
+    path: "/bubble-sort-representation",
+    emoji: "🔄",
+  },
 ];

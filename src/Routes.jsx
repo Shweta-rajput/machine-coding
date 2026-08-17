@@ -5,6 +5,7 @@ import FolderStructure from "./components/FolderStructure/FolderStructure";
 import NestedCheckboxes from "./components/NestedCheckboxes/NestedCheckboxes";
 import MultiToast from "./components/MultiToast/MultiToast";
 import TicTacToe from "./components/TicTacToe/TicTacToe";
+import BubbleSortRepresentaion from "./components/BubbleSortRepresentaion";
 
 const AllRoutes = () => {
   return (
@@ -15,6 +16,10 @@ const AllRoutes = () => {
       <Route path="/nested-checkboxes" element={<NestedCheckboxes />} />
       <Route path="/multiple-toasts" element={<MultiToast />} />
       <Route path="/tic-tac-toe" element={<TicTacToe />} />
+      <Route
+        path="/bubble-sort-representation"
+        element={<BubbleSortRepresentaion />}
+      />
     </Routes>
   );
 };
